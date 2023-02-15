@@ -1,0 +1,182 @@
+object Form1: TForm1
+  Left = 373
+  Top = 53
+  Width = 347
+  Height = 640
+  Caption = 'Aggregator Test'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 16
+    Width = 64
+    Height = 13
+    Caption = 'RSS Channel'
+  end
+  object lblChannelNam: TLabel
+    Left = 8
+    Top = 56
+    Width = 121
+    Height = 20
+    Caption = 'lblChannelNam'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = lblChannelNamClick
+    OnMouseEnter = lblChannelNamMouseEnter
+    OnMouseLeave = lblChannelNamMouseLeave
+  end
+  object lblCopyright: TLabel
+    Left = 8
+    Top = 88
+    Width = 54
+    Height = 13
+    Caption = 'lblCopyright'
+  end
+  object lblManagingEditor: TLabel
+    Left = 8
+    Top = 112
+    Width = 84
+    Height = 13
+    Caption = 'lblManagingEditor'
+  end
+  object lblWebmaster: TLabel
+    Left = 8
+    Top = 136
+    Width = 64
+    Height = 13
+    Caption = 'lblWebmaster'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 160
+    Width = 80
+    Height = 13
+    Caption = 'News Headlines:'
+  end
+  object spdbtnOpen: TSpeedButton
+    Left = 304
+    Top = 8
+    Width = 23
+    Height = 22
+    Glyph.Data = {
+      36050000424D3605000000000000360400002800000010000000100000000100
+      0800000000000001000000000000000000000001000000010000000000000101
+      0100020202000303030004040400050505000606060007070700080808000909
+      09000A0A0A000B0B0B000C0C0C000D0D0D000E0E0E000F0F0F00101010001111
+      1100121212001313130014141400151515001616160017171700181818001919
+      19001A1A1A001B1B1B001C1C1C001D1D1D001E1E1E001F1F1F00202020002121
+      2100222222002323230024242400252525002626260027272700282828002929
+      29002A2A2A002B2B2B002C2C2C002D2D2D002E2E2E002F2F2F00303030003131
+      3100323232003333330034343400353535003636360037373700383838003939
+      39003A3A3A003B3B3B003C3C3C003D3D3D003E3E3E003F3F3F00404040004141
+      4100424242004343430044444400454545004646460047474700484848004949
+      49004A4A4A004B4B4B004C4C4C004D4D4D004E4E4E004F4F4F00505050005C4B
+      5C007A3F7A009F2E9F00C21DC200E60CE600F604F600FB01FB00FE00FE00FE00
+      FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+      FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+      FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+      FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+      FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+      FE00FE00FE00FE01FE00FD01FD00FC03FC00FA05FA00F708F700F30DF300ED14
+      ED00E41FE400D630D600C347C300B25EB200A86DA8009C7D9C00968796009191
+      9100929292009393930094949400959595009696960097979700989898009999
+      99009A9A9A009B9B9B009C9C9C009D9D9D009E9E9E009F9F9F00A0A0A000A1A1
+      A100A2A2A200A3A3A300A4A4A400A5A5A500A6A6A600A7A7A700A8A8A800A9A9
+      A900AAAAAA00ABABAB00ACACAC00B0B2B200B4B7B700B8BCBC00BFC7C800C5D1
+      D100CBD8D900CFDEDF00D5E5E500DAEAEA00DAEFF000D9F2F500D8F5F800D6F5
+      F900D6F6FA00D0F5FA00CDF5FA00C9F4FA00C3F3F900BDF2F800B8F2F900B1F3
+      F900AAF3FA00A0F4FB0098F5FC0092F7FD008EF7FD008BF7FD0089F6FD0087F4
+      FD0084F3FD0083F1FD0080EEFC007DEBFC007BE9FB0078E6FB0074E2FA0073DF
+      FA0071DCF9006CDAF90067D6F90063D2F80061D1F8005ECFF8005CCDF70059CB
+      F70056C8F70053C6F6004FC2F20048BCED0041B5E4003BAFDF0035A9D80030A4
+      D4002A9FD000269BCD002297C9001D91C4001A8EC200168ABE000F83B9000B7F
+      B600097DB400087CB300077AB2000679B0000477AE000376AE000375AD000275
+      AD000274AC000274AC000274AC000274AC000274AC000274AC000274AC000274
+      AC000274AC000274AC000274AC000274AC000274AC000273AB006DF8F8F8F8F8
+      F8F8F8F8F8F8F86D6D6DF8E7DED5DCDCDCDCDCDCDCDCE4E86D6DF8E0E5D2DBDB
+      DBDBDBDBDBDBE3C0F86DF8D9F8C4D7D7D7D7D7D6D7D7E2C0F86DF8D7E9D2CFD3
+      D3D3D3D3D3D3E1C0EA6DF8D3E2DFC4D0D0D0D0D0D0D0E0C0C0F8F8D0D8E8BAC0
+      C0C0C0C0C0C0D2BABEF8F8CDCDE9F8F8F8F8F8F8F8F8F8F8F8F8F8CBCACACBCA
+      CACBCACBCACAFF6D6D6DF8BAC8C8C8C7C7C8C7C7C8C7FF6D6D6D6DF8BAC6C6C6
+      F8F8F8F8F8F86D6D6D6D6D6DF8F8F8F86D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D
+      6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D
+      6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D6D}
+    OnClick = spdbtnOpenClick
+  end
+  object edtFileName: TEdit
+    Left = 80
+    Top = 8
+    Width = 217
+    Height = 21
+    TabOrder = 0
+    OnChange = edtFileNameChange
+  end
+  object lstbxheadlines: TListBox
+    Left = 8
+    Top = 176
+    Width = 321
+    Height = 201
+    ItemHeight = 13
+    TabOrder = 1
+    OnClick = lstbxheadlinesClick
+  end
+  object mnFeed: TMemo
+    Left = 8
+    Top = 384
+    Width = 321
+    Height = 225
+    Lines.Strings = (
+      'mnFeed')
+    TabOrder = 2
+  end
+  object SimpleRSS: TSimpleRSS
+    XMLFileOptions.Options = [doNodeAutoCreate, doAttrNull, doAutoPrefix, doNamespaceDecl]
+    XMLFileOptions.ParseOptions = []
+    Channel.Required.Title = 'Title Required'
+    Channel.Required.Link = 'Link Required'
+    Channel.Required.Desc = 'Description Required'
+    Channel.Optional.Language = langEN
+    Channel.Optional.PubDate.DateTime = 37735.955299895830000000
+    Channel.Optional.PubDate.TimeZone = 'GMT'
+    Channel.Optional.LastBuildDate.DateTime = 37735.955299895830000000
+    Channel.Optional.LastBuildDate.TimeZone = 'GMT'
+    Channel.Optional.Categories = <>
+    Channel.Optional.Docs = 'http://backend.userland.com/rss'
+    Channel.Optional.Cloud.Port = 1
+    Channel.Optional.TTL = 60
+    Channel.Optional.Image.Include = False
+    Channel.Optional.Image.Required.URL = 'URL Required'
+    Channel.Optional.Image.Required.Title = 'Title Required'
+    Channel.Optional.Image.Required.Link = 'Link Required'
+    Channel.Optional.Image.Optional.Width = 88
+    Channel.Optional.Image.Optional.Height = 31
+    Channel.Optional.SkipDays.Monday = False
+    Channel.Optional.SkipDays.Tuesday = False
+    Channel.Optional.SkipDays.Wednesday = False
+    Channel.Optional.SkipDays.Thursday = False
+    Channel.Optional.SkipDays.Friday = False
+    Channel.Optional.SkipDays.Saturday = False
+    Channel.Optional.SkipDays.Sunday = False
+    Items = <>
+    Version = '2.0'
+    Left = 176
+    Top = 32
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 208
+    Top = 88
+  end
+end
