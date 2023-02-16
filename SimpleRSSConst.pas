@@ -25,11 +25,9 @@ Additional work by:
  - Thomas Zangl <thomas@tzis.net> 2005
 --------------------------------------------------------------------------------
 }
-
 unit SimpleRSSConst;
 
 interface
-
 Const
   strSimpleRSS : String = 'SimpleRSS';
   strSimpleRSSVersion : String = 'ver 0.4 (BlueHippo) Release 1';
@@ -248,19 +246,16 @@ Const
   reEntry: String ='entry';
   reContent: String ='content';
   reContentEncoded: String = 'content:encoded';
-
   reTagline: String ='tagline';
   reModified: String = 'modified';
   reEMail: String = 'email';
   reID: String = 'id';
   reHead: String = 'head';
-
   // atom attributes
   attHREF: String = 'href';
   attNAME: String = 'name';
   attURL: String = 'url';
   attMode: String = 'mode';
-
   //RDF
   rdfeRDFPrefix : String = 'rdf';
   rdfeDate: String = 'dc:date';
@@ -272,7 +267,6 @@ Const
   rdfeItems : String = 'items';
   rdfeSeq : String = 'rdf:Seq';
   rdfeli : String = 'rdf:li';
-
   //iTunes
   ituneNS : String = 'itunes';
   ituneNSURL : String = 'http://www.itunes.com/DTDs/Podcast-1.0.dtd';
@@ -291,18 +285,13 @@ Const
   itunesYes : String = 'yes';
   itunesNo : String = 'no';
   itunesExplicit : String = 'itunes:explicit';
-
   // Mode values
   attValueBase64: String = 'base64';
-
   //Misc Valus
   strIdHTTPComponent : String = 'idHTTP';
   //strResource : String = 'resource';
-
 	//ERROR MESSAGES
 	emRequiredFieldMissing : String = 'Required Field Missing. Field: ';
   emRequireComponentMissing : String = 'Required Component Missing. Component: ';
-
 implementation
-
 end.

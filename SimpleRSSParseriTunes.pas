@@ -32,11 +32,11 @@ iTunes Specification:
 --------------------------------------------------------------------------------
 }
 //todo: update title block to contain itunes info
-unit SimpleParseriTunes;
+unit SimpleRSSParseriTunes;
 
 interface
 
-uses Classes, SimpleParserBase, Variants;
+uses Classes, SimpleRSSParserBase, Variants;
 
 type
     TSimpleParseriTunes = class(TSimpleParserBase)
@@ -45,7 +45,6 @@ type
     public
         procedure Parse; override;
         Procedure Generate; override;
-    published
     end; { TSimpleParserRSS }
 
 
@@ -53,7 +52,7 @@ implementation
 
 uses
   XMLIntf, SimpleRSSTypes, SimpleRSSConst, SimpleRSSUtils, SysUtils,
-  iTunesTypes, XMLDoc, SimpleRSS;
+  SimpleRSSiTunesTypes, XMLDoc, SimpleRSS;
 
 procedure TSimpleParseriTunes.Generate;
 var

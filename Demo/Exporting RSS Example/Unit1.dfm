@@ -1,18 +1,18 @@
 object Form1: TForm1
   Left = 76
   Top = 46
-  Width = 870
-  Height = 640
   Caption = 'Form1'
+  ClientHeight = 601
+  ClientWidth = 854
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 16
@@ -55,64 +55,5 @@ object Form1: TForm1
       2B2E126208000000000000004C0000000114020000000000C000000000000046
       8000000000000000000000000000000000000000000000000000000000000000
       00000000000000000100000000000000000000000000000000000000}
-  end
-  object SimpleRSS: TSimpleRSS
-    XMLFileOptions.Options = [doNodeAutoCreate, doAttrNull, doAutoPrefix, doNamespaceDecl]
-    XMLFileOptions.ParseOptions = []
-    Channel.Required.Title = 'SADev RSS'
-    Channel.Required.Link = 'http://www.sadev.co.za'
-    Channel.Required.Desc = 'RSS For www.sadev.co.za'
-    Channel.Optional.Language = langEN_ZA
-    Channel.Optional.Copyright = '(C) Copyright Robert MacLean 2003 All Rights Reserved World Wide'
-    Channel.Optional.ManagingEditor = 'robert@sadev.co.za'
-    Channel.Optional.WebMaster = 'robert@sadev.co.za'
-    Channel.Optional.PubDate.DateTime = 37718.823652233800000000
-    Channel.Optional.PubDate.TimeZone = 'SAST'
-    Channel.Optional.LastBuildDate.DateTime = 37826.573645833320000000
-    Channel.Optional.LastBuildDate.TimeZone = 'GMT'
-    Channel.Optional.Categories = <>
-    Channel.Optional.Generator = 'Test App'
-    Channel.Optional.Docs = 'http://backend.userland.com/rss'
-    Channel.Optional.Cloud.Port = 1
-    Channel.Optional.TTL = 60
-    Channel.Optional.Image.Include = False
-    Channel.Optional.Image.Required.URL = 'URL Required'
-    Channel.Optional.Image.Required.Title = 'Title Required'
-    Channel.Optional.Image.Required.Link = 'Link Required'
-    Channel.Optional.Image.Optional.Width = 0
-    Channel.Optional.Image.Optional.Height = 0
-    Channel.Optional.Rating = 'PICS Rating Here'
-    Channel.Optional.SkipHours.h01 = True
-    Channel.Optional.SkipHours.h02 = True
-    Channel.Optional.SkipHours.h03 = True
-    Channel.Optional.SkipHours.h04 = True
-    Channel.Optional.SkipHours.h05 = True
-    Channel.Optional.SkipHours.h06 = True
-    Channel.Optional.SkipHours.h07 = True
-    Channel.Optional.SkipHours.h22 = True
-    Channel.Optional.SkipHours.h23 = True
-    Channel.Optional.SkipHours.h00 = True
-    Channel.Optional.SkipDays.Monday = False
-    Channel.Optional.SkipDays.Tuesday = False
-    Channel.Optional.SkipDays.Wednesday = False
-    Channel.Optional.SkipDays.Thursday = False
-    Channel.Optional.SkipDays.Friday = False
-    Channel.Optional.SkipDays.Saturday = True
-    Channel.Optional.SkipDays.Sunday = True
-    Items = <
-      item
-        Title = 'Test'
-        Description = 'This one was added in the delphi IDE'
-        Categories = <
-          item
-            Title = 'InsideIDETest'
-          end>
-        Enclosure.Length = 0
-        PubDate.DateTime = 37719.760242476850000000
-        PubDate.TimeZone = 'GMT'
-      end>
-    Version = '2.0'
-    Left = 144
-    Top = 96
   end
 end

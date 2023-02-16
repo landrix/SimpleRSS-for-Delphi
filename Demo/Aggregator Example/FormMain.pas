@@ -4,11 +4,12 @@ interface
 
 uses
 	Windows, Messages, SysUtils, StdCtrls, ShellAPI,
-	Controls, Dialogs, Buttons, SimpleRSS, Classes, Forms, Graphics;
+	Controls, Dialogs, Buttons, Classes, Forms, Graphics
+  ,SimpleRSS
+  ;
 
 type
 	TForm1 = class(TForm)
-    SimpleRSS: TSimpleRSS;
     Label1: TLabel;
     lblChannelNam: TLabel;
     lblCopyright: TLabel;
@@ -26,8 +27,10 @@ type
     procedure spdbtnOpenClick(Sender: TObject);
     procedure edtFileNameChange(Sender: TObject);
     procedure lstbxheadlinesClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
-    { Private declarations }
+    SimpleRSS: TSimpleRSS;
   public
     { Public declarations }
   end;
@@ -51,6 +54,16 @@ procedure TForm1.lblChannelNamMouseLeave(Sender: TObject);
 begin
 	lblChannelNam.Font.Color := clBlack;
 	lblChannelNam.Cursor := crArrow;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  SimpleRSS:= TSimpleRSS.Create(nil);
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  if Assigned(SimpleRSS) then begin SimpleRSS.Free; SimpleRSS := nil; end;
 end;
 
 procedure TForm1.lblChannelNamClick(Sender: TObject);
@@ -95,7 +108,7 @@ procedure TForm1.lstbxheadlinesClick(Sender: TObject);
 begin
 	mnFeed.Lines.Clear;
 	mnFeed.Lines.Text := SimpleRSS.Items.Items[lstbxheadlines.ItemIndex].Title+#13+#10+
-											 '   by '+SimpleRSS.Items.Items[lstbxheadlines.ItemIndex].Author+#13+#10+
+											 '   by '+SimpleRSS.Items.Items[lstbxheadlines.ItemIndex].Author.Name+#13+#10+
 											 SimpleRSS.Items.Items[lstbxheadlines.ItemIndex].Description;
 end;
 

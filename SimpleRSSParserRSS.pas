@@ -30,11 +30,11 @@ http://web.resource.org/rss/1.0/modules/content/
 --------------------------------------------------------------------------------
 }
 
-unit SimpleParserRSS;
+unit SimpleRSSParserRSS;
 
 interface
 
-uses Classes, SimpleParserBase, Variants;
+uses Classes, SimpleRSSParserBase, Variants;
 
 type
     TSimpleParserRSS = class(TSimpleParserBase)
@@ -43,7 +43,6 @@ type
     public
         procedure Parse; override;
         Procedure Generate; override;
-    published
     end; { TSimpleParserRSS }
 
 
@@ -741,11 +740,11 @@ begin
         end; // if then
         // END ITEM
         if ChildNodes.Nodes[Counter].NodeName = reTitle then
-          FSimpleRSS.Channel.Required.Title := ChildNodes.Nodes[Counter].NodeValue;
+          FSimpleRSS.Channel.Required.Title := ChildNodes.Nodes[Counter].Text;
         if ChildNodes.Nodes[Counter].NodeName = reLink then
-          FSimpleRSS.Channel.Required.Link := ChildNodes.Nodes[Counter].NodeValue;
+          FSimpleRSS.Channel.Required.Link := ChildNodes.Nodes[Counter].Text;
         if ChildNodes.Nodes[Counter].NodeName = reDescription then
-          FSimpleRSS.Channel.Required.Desc := ChildNodes.Nodes[Counter].NodeValue;
+          FSimpleRSS.Channel.Required.Desc := ChildNodes.Nodes[Counter].Text;
         if ChildNodes.Nodes[Counter].NodeName = reLanguage then begin
           FSimpleRSS.Channel.Optional.Language := StringToLanguage(ChildNodes.Nodes[Counter].NodeValue);
           if FSimpleRSS.Channel.Optional.Language = langX then

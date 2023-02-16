@@ -23,11 +23,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 This File Originally Created By Thomas Zangl <thomas@tzis.net> 2005
 --------------------------------------------------------------------------------
 }
-unit SimpleParserAtom;
+unit SimpleRSSParserAtom;
 
 interface
 
-uses Classes, SimpleParserBase;
+uses Classes, SimpleRSSParserBase;
 
 type
     TSimpleParserAtom = class(TSimpleParserBase)
@@ -36,7 +36,6 @@ type
     public
       Procedure Generate; override;
       procedure Parse; override;
-    published
     end; { TSimpleParserRDF }
 
 implementation
@@ -46,7 +45,6 @@ uses  Variants,
       SimpleRSSConst,
       SimpleRSSTypes,
       IdCoderMIME,
-//      Dialogs,
       XMLIntf;
 
 

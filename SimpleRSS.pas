@@ -1,5 +1,7 @@
 {
 --------------------------------------------------------------------------------
+http://svn.osdn.net/svnroot/dzfeedreader/
+
 SimpleRSS Version 0.4 (BlueHippo)
 
 http://simplerss.sourceforge.net
@@ -28,13 +30,12 @@ Additional work by:
 unit SimpleRSS;
 
 interface
+
 uses
   SysUtils,
   Classes,
   SimpleRSSTypes,
-  XMLDoc,
-  XMLIntf,
-  XMLDOM,
+  Xml.xmldom,Xml.XMLDoc,Xml.XMLIntf,Xml.XMLSchema,
   Variants,
   idHTTP;
 
@@ -92,21 +93,16 @@ type
     Property OnParseXML:TNotifyEvent Read FOnParseXML Write SetOnParseXML;
   end;
 
-Procedure Register;
-
 implementation
 
 uses
   SimpleRSSConst,
-  SimpleParserRDF,
-  SimpleParserRSS,
-  SimpleParserAtom,
-  SimpleParserBase, SimpleParseriTunes;
+  SimpleRSSParserRDF,
+  SimpleRSSParserRSS,
+  SimpleRSSParserAtom,
+  SimpleRSSParserBase,
+  SimpleRSSParseriTunes;
 
-Procedure Register;
-begin
-  RegisterComponents('WebTools', [TSimpleRSS]);
-end;
 { TSimpleRSS }
 
 Procedure TSimpleRSS.ClearXML;
@@ -122,8 +118,9 @@ begin
   inherited;
   FChannel := TRSSChannel.Create;
   FItems := TRSSItems.Create(Self, TRSSItem);
-  FXMLFile := TXMLDocument.Create(Self);
+  FXMLFile := TXMLDocument.Create(nil);
   FXMLFile.Active := True;
+  FXMLFile.Encoding := 'utf-8';
   FVersion := strRSSVersion;
   FXMLType := xtRSS;
   FXMLFile.Options := [doNodeAutoCreate,doAttrNull,doAutoPrefix,doNodeAutoIndent];
@@ -133,12 +130,9 @@ end;
 
 destructor TSimpleRSS.Destroy;
 begin
-  if FChannel <> nil then
-    FChannel.Free;
-  if FItems <> nil then
-    FItems.Free;
-  if FXMLFile <> nil then
-    FXMLFile.Free;
+  if Assigned(FChannel) then begin FChannel.Free; FChannel := nil; end;
+  if Assigned(FItems) then begin FItems.Free; FItems := nil; end;
+  if Assigned(FXMLFile) then begin FXMLFile.Free; FXMLFile := nil; end;
   inherited;
 end;
 
@@ -193,6 +187,8 @@ begin
 
       If Assigned(FOnParseXML) then
         FOnParseXML(Self);
+
+      aParser.Free;
     end
   else
     raise ESimpleRSSException.CreateFmt(reFormatUnkown+ ': %s', [FXMLFile.DocumentElement.NodeName]);
@@ -266,7 +262,9 @@ end;
 
 Procedure TSimpleRSS.LoadFromString(S: string);
 begin
-  FXMLFile.XML.Text := S;
+  ClearXML;
+  FXMLFile.LoadFromXML(S);
+  GenerateComponent;
 end;
 
 Procedure TSimpleRSS.LoadFromStrings(Strings: TStrings);

@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 This File Originally Created By Robert MacLean <dfantom@gmail.com> 2005
 --------------------------------------------------------------------------------
 }
-unit iTunesTypes;
+unit SimpleRSSiTunesTypes;
 
 interface
 
@@ -404,12 +404,12 @@ end;
 
 procedure TiTunesChannelExtra.SetKeywordsFromString(Keywords: String);
 begin
-  iTunesTypes.SetKeywordsFromString(Keywords,FKeywords);
+  SimpleRSSiTunesTypes.SetKeywordsFromString(Keywords,FKeywords);
 end;
 
 function TiTunesChannelExtra.GetKeywordsAsString: String;
 begin
-  Result := iTunesTypes.GetKeywordsAsString(FKeyWords);
+  Result := SimpleRSSiTunesTypes.GetKeywordsAsString(FKeyWords);
 end;
 
 { TiTunesDuration }
@@ -521,12 +521,12 @@ end;
 
 procedure TiTunesItemExtra.SetKeywordsFromString(Keywords: String);
 begin
-  iTunesTypes.SetKeywordsFromString(KeyWords,FKeyWords);
+  SimpleRSSiTunesTypes.SetKeywordsFromString(KeyWords,FKeyWords);
 end;
 
 function TiTunesItemExtra.GetKeywordsAsString: String;
 begin
-  Result := iTunesTypes.GetKeywordsAsString(FKeyWords);
+  Result := SimpleRSSiTunesTypes.GetKeywordsAsString(FKeyWords);
 end;
 
 end.

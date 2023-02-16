@@ -1,0 +1,57 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+# Handle line endings automatically for files detected as text 
+# and leave all files detected as binary untouched.
+#* text=auto
+#* text eol=crlf
+* text=false
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+
+# Declare files that will always have CRLF line endings on checkout.
+
+# Denote all files that are truly binary and should not be modified.
+*.aff binary
+*.dic binary
+*.lat binary
+*.po binary
+*.exe binary
+*.res binary
+*.dres binary
+*.ico binary
+*.dll binary
+*.bpl binary
+*.dcp binary
+*.7z binary
+*.dcu binary
+*.bmp binary
+*.png binary
+*.docx binary
+*.jpg binary
+*.dcr binary
+*.obj binary
+*.nx1 binary
+*.HxS binary
+*.HxI binary
+*.mdb binary
+*.chm binary
+*.jdbg binary
+*.rsb binary
+*.pdf binary
+*.doc binary
+*.chw binary
+*.Hlp binary
+*.frf binary
+*.o binary
+*.gif binary
+*.rsm binary
+*.a binary
+*.so binary
+*.mo binary
+*.bpi binary
+*.lib binary
+*.r32 binary
+*.d32 binary
+reg.reg binary
+*ddNSi binary
+*pdb binary

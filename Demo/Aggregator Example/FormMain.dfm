@@ -1,17 +1,17 @@
 object Form1: TForm1
   Left = 373
   Top = 53
-  Width = 347
-  Height = 640
   Caption = 'Aggregator Test'
+  ClientHeight = 601
+  ClientWidth = 331
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 13
   object Label1: TLabel
     Left = 8
@@ -141,39 +141,6 @@ object Form1: TForm1
     Lines.Strings = (
       'mnFeed')
     TabOrder = 2
-  end
-  object SimpleRSS: TSimpleRSS
-    XMLFileOptions.Options = [doNodeAutoCreate, doAttrNull, doAutoPrefix, doNamespaceDecl]
-    XMLFileOptions.ParseOptions = []
-    Channel.Required.Title = 'Title Required'
-    Channel.Required.Link = 'Link Required'
-    Channel.Required.Desc = 'Description Required'
-    Channel.Optional.Language = langEN
-    Channel.Optional.PubDate.DateTime = 37735.955299895830000000
-    Channel.Optional.PubDate.TimeZone = 'GMT'
-    Channel.Optional.LastBuildDate.DateTime = 37735.955299895830000000
-    Channel.Optional.LastBuildDate.TimeZone = 'GMT'
-    Channel.Optional.Categories = <>
-    Channel.Optional.Docs = 'http://backend.userland.com/rss'
-    Channel.Optional.Cloud.Port = 1
-    Channel.Optional.TTL = 60
-    Channel.Optional.Image.Include = False
-    Channel.Optional.Image.Required.URL = 'URL Required'
-    Channel.Optional.Image.Required.Title = 'Title Required'
-    Channel.Optional.Image.Required.Link = 'Link Required'
-    Channel.Optional.Image.Optional.Width = 88
-    Channel.Optional.Image.Optional.Height = 31
-    Channel.Optional.SkipDays.Monday = False
-    Channel.Optional.SkipDays.Tuesday = False
-    Channel.Optional.SkipDays.Wednesday = False
-    Channel.Optional.SkipDays.Thursday = False
-    Channel.Optional.SkipDays.Friday = False
-    Channel.Optional.SkipDays.Saturday = False
-    Channel.Optional.SkipDays.Sunday = False
-    Items = <>
-    Version = '2.0'
-    Left = 176
-    Top = 32
   end
   object OpenDialog1: TOpenDialog
     Left = 208

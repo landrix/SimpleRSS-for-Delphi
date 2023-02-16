@@ -1,0 +1,16 @@
+# Delphi history and backups
+__history/
+__recovery/
+__recovery
+__history
+SimpleRSS-0.4-BlueHippo-Release1
+Win32
+Win64
+
+*.local
+*.identcache
+*.projdata
+*.tvsconfig
+*.dsk
+*.~*
+*.stat

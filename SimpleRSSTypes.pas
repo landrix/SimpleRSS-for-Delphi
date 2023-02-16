@@ -30,7 +30,7 @@ unit SimpleRSSTypes;
 interface
 
 uses
-  Classes, SysUtils, iTunesTypes;
+  Classes, SysUtils, SimpleRSSiTunesTypes,DateUtils;
 
 type
   ESimpleRSSException = class(Exception);
@@ -551,6 +551,7 @@ type
     procedure SetiTunes(const Value: TiTunesItemExtra);
   public
     constructor Create(Collection: TCollection); override;
+    destructor Destroy; override;
     function CommentsChanged: Boolean;
     function AuthorChanged: Boolean;
     function TitleChanged: Boolean;
@@ -594,9 +595,7 @@ implementation
 
 uses
   IdGlobal,
-  {$IFDEF VER170}
   IdGlobalProtocols,
-  {$ENDIF}
   SimpleRSSConst;
 
 {$IFNDEF LINUX}
@@ -1209,6 +1208,18 @@ end;
 function TRSSItem.DescriptionChanged: Boolean;
 begin
   Result := FDescriptionChanged;
+end;
+
+destructor TRSSItem.Destroy;
+begin
+  if Assigned(FCategory) then begin FCategory.Free; FCategory := nil; end;
+  if Assigned(FPubDate) then begin FPubDate.Free; FPubDate := nil; end;
+  if Assigned(FEnclosure) then begin FEnclosure.Free; FEnclosure := nil; end;
+  if Assigned(FGUID) then begin FGUID.Free; FGUID := nil; end;
+  if Assigned(FSource) then begin FSource.Free; FSource := nil; end;
+  if Assigned(FAuthor) then begin FAuthor.Free; FAuthor := nil; end;
+  if Assigned(FiTunes) then begin FiTunes.Free; FiTunes := nil; end;
+  inherited;
 end;
 
 function TRSSItem.LinkChanged: Boolean;

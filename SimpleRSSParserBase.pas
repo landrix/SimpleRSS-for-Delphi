@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 This File Originally Created By Thomas Zangl <thomas@tzis.net> 2005
 --------------------------------------------------------------------------------
 }
-unit SimpleParserBase;
+unit SimpleRSSParserBase;
 
 interface
 
@@ -38,7 +38,6 @@ type
         Procedure Generate; virtual; abstract;
         procedure Parse; virtual; abstract;
         constructor Create(SimpleRSS: TSimpleRSS);
-    published
     end; { TSimpleParserBase }
 
 implementation

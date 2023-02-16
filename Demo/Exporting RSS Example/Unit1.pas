@@ -9,15 +9,14 @@ uses
 type
   TForm1 = class(TForm)
     WebBrowser1: TWebBrowser;
-    SimpleRSS: TSimpleRSS;
     Label1: TLabel;
     Label2: TLabel;
     WebBrowser2: TWebBrowser;
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
-    { Private declarations }
-  public
-    { Public declarations }
+    SimpleRSS: TSimpleRSS;
   end;
 
 var
@@ -28,6 +27,11 @@ implementation
 uses ComObj;
 
 {$R *.dfm}
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  SimpleRSS:= TSimpleRSS.Create(nil);
+end;
 
 procedure TForm1.FormShow(Sender: TObject);
 Var
@@ -47,7 +51,7 @@ begin
     Begin
       Title := 'First News Article';
       Description := 'This is merely a simple test';
-      Author := 'robert@sadev.co.za';
+      Author.EMail := 'robert@sadev.co.za';
       Source.Title := 'Made up';
       Source.URL := 'http://www.nowhere.com';
       Source.Include := True;
@@ -59,7 +63,7 @@ begin
     Begin
       Title := 'Second News Article';
       Description := 'This is slightly more complex test';
-      Author := 'robert@sadev.co.za';
+      Author.EMail := 'robert@sadev.co.za';
       Source.Title := 'Made up';
       Source.URL := 'http://www.nowhere.com';
       Source.Include := True;
@@ -76,7 +80,7 @@ begin
     Begin
       Title := 'Third News Article';
       Description := 'This is should have an video attached.';
-      Author := 'robert@sadev.co.za';
+      Author.EMail := 'robert@sadev.co.za';
       With Item.Categories.Add do
         Begin
           Title := 'TEST';
@@ -94,7 +98,7 @@ begin
     Begin
       Title := 'Another News Article';
       Description := 'Comments Field';
-      Author := 'robert@sadev.co.za';
+      Author.EMail := 'robert@sadev.co.za';
       Category := Item.Categories.Add;
       Category.Title := 'TEST';
       GUID.Include := True;
@@ -106,6 +110,11 @@ begin
   SimpleRSS.LoadFromFile('c:\test.xml');
   SimpleRSS.SaveToFile('c:\test2.xml');
   WebBrowser2.Navigate('file://c:/test2.xml');
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  if Assigned(SimpleRSS) then begin SimpleRSS.Free; SimpleRSS := nil; end;
 end;
 
 end.

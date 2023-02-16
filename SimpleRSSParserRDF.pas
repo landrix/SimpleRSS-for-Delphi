@@ -29,11 +29,11 @@ http://www.w3.org/TR/1999/REC-rdf-syntax-19990222/
 http://web.resource.org/rss/1.0/spec
 --------------------------------------------------------------------------------
 }
-unit SimpleParserRDF;
+unit SimpleRSSParserRDF;
 
 interface
 
-uses Classes, SimpleParserBase, Variants;
+uses Classes, SimpleRSSParserBase, Variants;
 
 type
     TSimpleParserRDF = class(TSimpleParserBase)
@@ -42,7 +42,6 @@ type
     public
       Procedure Generate; override;
       procedure Parse; override;
-    published
     end; { TSimpleParserRDF }
 
 implementation
