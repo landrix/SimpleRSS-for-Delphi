@@ -666,7 +666,9 @@ begin
               aTempNode:=ChildNodes.Nodes[Counter].ChildNodes.FindNode(reContent);
               if (aTempNode.ChildNodes.Count>0) then begin
                 Description := aTempNode.ChildNodes.Nodes[0].NodeValue;
-              end else begin
+              end else
+              if not VarIsNull(aTempNode.NodeValue) then
+              begin
                 Description := aTempNode.NodeValue;
               end;
             end;
@@ -675,7 +677,9 @@ begin
               aTempNode:=ChildNodes.Nodes[Counter].ChildNodes.FindNode(reContentEncoded);
               if (aTempNode.ChildNodes.Count>0) then begin
                 Description := aTempNode.ChildNodes.Nodes[0].NodeValue;
-              end else begin
+              end else
+              if not VarIsNull(aTempNode.NodeValue) then
+              begin
                 Description := aTempNode.NodeValue;
               end;
             end;
@@ -684,7 +688,9 @@ begin
               aTempNode:=ChildNodes.Nodes[Counter].ChildNodes.FindNode(reDescription);
               if (aTempNode.ChildNodes.Count>0) then begin
                 Description := aTempNode.ChildNodes.Nodes[0].NodeValue;
-              end else begin
+              end else
+              if not VarIsNull(aTempNode.NodeValue) then
+              begin
                 Description := aTempNode.NodeValue;
               end;
             end;

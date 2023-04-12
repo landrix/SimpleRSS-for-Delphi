@@ -1,11 +1,8 @@
 unit Unit1;
-
 interface
-
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SimpleRSS, OleCtrls, SHDocVw, SimpleRSSTypes, StdCtrls;
-
 type
   TForm1 = class(TForm)
     WebBrowser1: TWebBrowser;
@@ -18,16 +15,11 @@ type
   private
     SimpleRSS: TSimpleRSS;
   end;
-
 var
   Form1: TForm1;
-
 implementation
-
 uses ComObj;
-
 {$R *.dfm}
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   SimpleRSS:= TSimpleRSS.Create(nil);
