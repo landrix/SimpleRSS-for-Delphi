@@ -44,7 +44,6 @@ uses  Variants,
       SimpleRSSUtils,
       SimpleRSSConst,
       SimpleRSSTypes,
-      IdCoderMIME,
       XMLIntf;
 
 

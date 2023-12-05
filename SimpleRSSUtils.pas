@@ -30,10 +30,11 @@ unit SimpleRSSUtils;
 interface
 
 uses
-  SysUtils,
-  XMLIntf,
+  SysUtils,XMLIntf,Variants,
+  System.NetEncoding,System.Net.HttpClient,System.Net.URLClient,
   SimpleRSSTypes,
-  SimpleRSS;
+  SimpleRSS,
+  SimpleRSSConst;
 
 function StringToLanguage(Language: string): TLanguages;
 Function LanguageToString(Language: TLanguages):String;
@@ -41,10 +42,23 @@ function DecodeString(Encoding: TEncodingType; Data: string): string;
 procedure GetSkipHours(RootNode: IXMLNode; var aSimpleRSS: TSimpleRSS);
 procedure GetSkipDays(RootNode: IXMLNode; var aSimpleRSS: TSimpleRSS);
 
+type
+  THttpClientValidateCertificatHelper = class(TObject)
+    procedure DoValidateCertificateEvent(const Sender: TObject;
+                 const ARequest: TURLRequest; const Certificate: TCertificate;
+                 var Accepted: Boolean);
+  end;
+
 implementation
 
-uses SimpleRSSConst,
-  IdCoderMime, Variants;
+{ THttpClientValidateCertificatHelper }
+
+procedure THttpClientValidateCertificatHelper.DoValidateCertificateEvent(
+  const Sender: TObject; const ARequest: TURLRequest;
+  const Certificate: TCertificate; var Accepted: Boolean);
+begin
+  Accepted := true;
+end;
 
 function StringToLanguage(Language: string): TLanguages;
 begin
@@ -443,14 +457,14 @@ end; // if then
 
 function DecodeString(Encoding: TEncodingType; Data: string): string;
 var
-  aBase64Decoder: TIdDecoderMIME;
+  aBase64Decoder: TBase64Encoding;
 begin
   Result := Data;
   case Encoding of
     etBase64: begin
-        aBase64Decoder := TIdDecoderMIME.Create(nil);
+        aBase64Decoder := TBase64Encoding.Create;
         try
-          Result := aBase64Decoder.DecodeString(Result);
+          Result := aBase64Decoder.Decode(Result);
         finally
           FreeAndNil(aBase64Decoder);
         end;

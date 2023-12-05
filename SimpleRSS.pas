@@ -33,11 +33,11 @@ interface
 
 uses
   SysUtils,
-  Classes,
-  SimpleRSSTypes,
+  Classes,Variants,
+  System.Net.HttpClient,System.Net.URLClient,System.Net.Mime,
   Xml.xmldom,Xml.XMLDoc,Xml.XMLIntf,Xml.XMLSchema,
-  Variants,
-  idHTTP;
+  SimpleRSSTypes
+  ;
 
 type
   TSimpleRSS = class(TComponent)
@@ -47,14 +47,12 @@ type
     FVersion: string;
     FXMLType: TXMLType;
     FXMLFile: TXMLDocument;
-    FIndyHTTP: TIdHTTP;
     FOnParseXML: TNotifyEvent;
     FOnCreate: TNotifyEvent;
     FOnGenerateXML: TNotifyEvent;
     Procedure SetChannel(const Value: TRSSChannel);
     Procedure SetItems(const Value: TRSSItems);
     Procedure SetVersion(const Value: string);
-    Procedure SetIndyHTTP(const Value: TIdHTTP);
     function GetSimpleRSSVersion: String;
     procedure SetOnCreate(const Value: TNotifyEvent);
     procedure SetOnGenerateXML(const Value: TNotifyEvent);
@@ -86,7 +84,6 @@ type
     property Version: string read FVersion write SetVersion;
     property XMLType: TXMLType read FXMLType write FXMLType;
     property XMLFile: TXMLDocument read FXMLFile;
-    Property IndyHTTP : TIdHTTP Read FIndyHTTP Write SetIndyHTTP;
     Property SimpleRSSVersion:String Read GetSimpleRSSVersion;
     Property OnCreate:TNotifyEvent Read FOnCreate Write SetOnCreate;
     Property OnGenerateXML:TNotifyEvent Read FOnGenerateXML Write SetOnGenerateXML;
@@ -97,6 +94,7 @@ implementation
 
 uses
   SimpleRSSConst,
+  SimpleRSSUtils,
   SimpleRSSParserRDF,
   SimpleRSSParserRSS,
   SimpleRSSParserAtom,
@@ -235,22 +233,31 @@ begin
 end;
 
 Procedure TSimpleRSS.LoadFromHTTP(URL: String);
-Var
-  MemoryStream : TMemoryStream;
+var
+  lHttpClient : THTTPClient;
+  lValidateCertificatHelper : THttpClientValidateCertificatHelper;
+  lMemoryStream : TMemoryStream;
 begin
-  If FIndyHTTP = nil then
-    Raise ESimpleRSSException.Create(emRequireComponentMissing+strIdHTTPComponent)
-  else
-    Begin
-      MemoryStream := TMemoryStream.Create;
-      Try
-        FIndyHTTP.Get(URL,MemoryStream);
-      Finally
-        MemoryStream.Position := 0;
-        LoadFromStream(MemoryStream);
-        MemoryStream.Free;
-      end; // try finally
-    end; // if then
+  lHttpClient := THTTPClient.Create;
+  lValidateCertificatHelper := THttpClientValidateCertificatHelper.Create;
+  lMemoryStream := TMemoryStream.Create;
+  try
+    lHttpClient.OnValidateServerCertificate := lValidateCertificatHelper.DoValidateCertificateEvent;
+    try
+      with lHttpClient.Get(URL,lMemoryStream) do
+      if StatusCode = 200 then
+      begin
+        lMemoryStream.Position := 0;
+        LoadFromStream(lMemoryStream);
+      end;
+    except
+    on E:Exception do raise E;
+    end;
+  finally
+    lMemoryStream.Free;
+    lValidateCertificatHelper.Free;
+    lHttpClient.Free;
+  end;
 end;
 
 Procedure TSimpleRSS.LoadFromStream(Stream: TStream);
@@ -304,11 +311,6 @@ end;
 Procedure TSimpleRSS.SetChannel(const Value: TRSSChannel);
 begin
   FChannel := Value;
-end;
-
-Procedure TSimpleRSS.SetIndyHTTP(const Value: TIdHTTP);
-begin
-  FIndyHTTP := Value;
 end;
 
 Procedure TSimpleRSS.SetItems(const Value: TRSSItems);

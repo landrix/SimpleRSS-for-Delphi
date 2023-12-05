@@ -288,7 +288,6 @@ Const
   // Mode values
   attValueBase64: String = 'base64';
   //Misc Valus
-  strIdHTTPComponent : String = 'idHTTP';
   //strResource : String = 'resource';
 	//ERROR MESSAGES
 	emRequiredFieldMissing : String = 'Required Field Missing. Field: ';
